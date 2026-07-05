@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Name — UX Designer</title>
+    <title>[Your Name] — UX Designer</title>
     <meta name="description"
-        content="UX Designer portfolio showcasing thoughtful design, user-centric thinking, and impactful digital experiences." />
+        content="[One-sentence summary of who you are and what kind of UX design work you do]" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -372,7 +372,13 @@
 
         .skill-pill:hover {
             border-color: var(--accent-dk);
+        }
+
+        /* ─── Placeholder content (fill in manually) ───────────── */
+        .placeholder {
             color: var(--accent);
+            font-style: italic;
+            border-bottom: 1px dashed var(--accent-dk);
         }
 
         /* ─── Experience ────────────────────────────────────────── */
@@ -740,19 +746,16 @@
 
         <div class="about-grid">
             <div class="about-text">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus accumsan
-                    nisl non felis ultrices, ac vestibulum mauris lacinia. I believe great design
-                    is invisible — it works so naturally users never have to think about it.
+                <p class="placeholder">
+                    [Write 2-3 sentences on your design philosophy — what "designing with intent"
+                    means to you and how you approach a new problem.]
                 </p>
-                <p>
-                    My process starts with empathy and ends with precision. From early discovery
-                    sessions to pixel-perfect prototypes, I focus on the small details that create
-                    big differences in how people experience digital products.
+                <p class="placeholder">
+                    [Write 2-3 sentences on your process — e.g. how you move from discovery/research
+                    through to shipped design, and what you personally focus on along the way.]
                 </p>
-                <p>
-                    When I'm not designing, you'll find me [personal interest placeholder] or
-                    exploring [another interest placeholder].
+                <p class="placeholder">
+                    [Optional: a sentence or two on personal interests/hobbies outside of design.]
                 </p>
                 <div class="skills-list">
                     <span class="skill-pill">UX Research</span>
@@ -767,20 +770,21 @@
             </div>
 
             <div class="about-stats">
+                <!-- Verify each number is real, or replace this whole block with qualitative "how I work" points -->
                 <div class="stat-card">
-                    <div class="stat-num">5+</div>
+                    <div class="stat-num placeholder">[#]</div>
                     <div class="stat-desc">Years of experience</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-num">32</div>
+                    <div class="stat-num placeholder">[#]</div>
                     <div class="stat-desc">Projects completed</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-num">14</div>
+                    <div class="stat-num placeholder">[#]</div>
                     <div class="stat-desc">Clients worldwide</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-num">8</div>
+                    <div class="stat-num placeholder">[#]</div>
                     <div class="stat-desc">Design awards</div>
                 </div>
             </div>
@@ -852,6 +856,13 @@
         <h2 class="section-title">Selected work</h2>
         <div class="section-divider"></div>
 
+        <!--
+          Case study framework (per UX portfolio best practice): each card leads with
+          the problem/outcome, not just "I designed this." Fill in Role/Problem/Process/Outcome
+          below, then point "View case" at a real case study page or deck.
+          Research suggests 2-3 deep case studies beat 4 shallow ones — consider dropping
+          the weakest card if you don't have strong material for all four.
+        -->
         <div class="projects-grid">
 
             <!-- Card 1 -->
@@ -860,12 +871,13 @@
                     <span class="thumb-icon">⬡</span>
                 </div>
                 <div class="project-body">
-                    <span class="project-tag">Mobile App · 2024</span>
-                    <div class="project-title">Project Alpha — [App Name Placeholder]</div>
-                    <div class="project-desc">
-                        A brief description of the project and the design challenge.
-                        What problem was being solved and who the users were.
-                        Placeholder text for project summary.
+                    <span class="project-tag placeholder">[Category · Year]</span>
+                    <div class="project-title placeholder">[Project name — anonymize if NDA'd, e.g. "Fintech onboarding redesign"]</div>
+                    <div class="project-desc placeholder">
+                        Role: [your title/role on this project]<br />
+                        Problem: [what was broken for users, and who they were]<br />
+                        Process: [key research/design steps you took]<br />
+                        Outcome: [result or metric, e.g. "reduced drop-off by X%"]
                     </div>
                 </div>
                 <div class="project-footer">
@@ -874,7 +886,7 @@
                         <span class="chip">Figma</span>
                         <span class="chip">iOS</span>
                     </div>
-                    <a href="#" class="project-link">View case →</a>
+                    <a href="#" class="project-link placeholder">View case →</a>
                 </div>
             </div>
 
@@ -884,12 +896,13 @@
                     <span class="thumb-icon">◈</span>
                 </div>
                 <div class="project-body">
-                    <span class="project-tag">SaaS Platform · 2023</span>
-                    <div class="project-title">Project Beta — [Platform Name Placeholder]</div>
-                    <div class="project-desc">
-                        A brief description of the project and the design challenge.
-                        What problem was being solved and who the users were.
-                        Placeholder text for project summary.
+                    <span class="project-tag placeholder">[Category · Year]</span>
+                    <div class="project-title placeholder">[Project name — anonymize if NDA'd]</div>
+                    <div class="project-desc placeholder">
+                        Role: [your title/role on this project]<br />
+                        Problem: [what was broken for users, and who they were]<br />
+                        Process: [key research/design steps you took]<br />
+                        Outcome: [result or metric]
                     </div>
                 </div>
                 <div class="project-footer">
@@ -897,7 +910,7 @@
                         <span class="chip">System Design</span>
                         <span class="chip">Web</span>
                     </div>
-                    <a href="#" class="project-link">View case →</a>
+                    <a href="#" class="project-link placeholder">View case →</a>
                 </div>
             </div>
 
@@ -907,12 +920,13 @@
                     <span class="thumb-icon">⬟</span>
                 </div>
                 <div class="project-body">
-                    <span class="project-tag">E-commerce · 2023</span>
-                    <div class="project-title">Project Gamma — [Brand Name Placeholder]</div>
-                    <div class="project-desc">
-                        A brief description of the project and the design challenge.
-                        What problem was being solved and who the users were.
-                        Placeholder text for project summary.
+                    <span class="project-tag placeholder">[Category · Year]</span>
+                    <div class="project-title placeholder">[Project name — anonymize if NDA'd]</div>
+                    <div class="project-desc placeholder">
+                        Role: [your title/role on this project]<br />
+                        Problem: [what was broken for users, and who they were]<br />
+                        Process: [key research/design steps you took]<br />
+                        Outcome: [result or metric]
                     </div>
                 </div>
                 <div class="project-footer">
@@ -920,22 +934,23 @@
                         <span class="chip">Research</span>
                         <span class="chip">Prototyping</span>
                     </div>
-                    <a href="#" class="project-link">View case →</a>
+                    <a href="#" class="project-link placeholder">View case →</a>
                 </div>
             </div>
 
-            <!-- Card 4 -->
+            <!-- Card 4 — consider removing if you only have 3 strong case studies -->
             <div class="project-card">
                 <div class="project-thumb p4-thumb">
                     <span class="thumb-icon">⬡</span>
                 </div>
                 <div class="project-body">
-                    <span class="project-tag">Dashboard · 2022</span>
-                    <div class="project-title">Project Delta — [Tool Name Placeholder]</div>
-                    <div class="project-desc">
-                        A brief description of the project and the design challenge.
-                        What problem was being solved and who the users were.
-                        Placeholder text for project summary.
+                    <span class="project-tag placeholder">[Category · Year]</span>
+                    <div class="project-title placeholder">[Project name — anonymize if NDA'd]</div>
+                    <div class="project-desc placeholder">
+                        Role: [your title/role on this project]<br />
+                        Problem: [what was broken for users, and who they were]<br />
+                        Process: [key research/design steps you took]<br />
+                        Outcome: [result or metric]
                     </div>
                 </div>
                 <div class="project-footer">
@@ -943,7 +958,7 @@
                         <span class="chip">Data Viz</span>
                         <span class="chip">Enterprise</span>
                     </div>
-                    <a href="#" class="project-link">View case →</a>
+                    <a href="#" class="project-link placeholder">View case →</a>
                 </div>
             </div>
 
@@ -959,17 +974,18 @@
             Have a project in mind or just want to say hello?
             My inbox is always open.
         </p>
-        <a href="mailto:hello@yourname.com" class="contact-email">hello@yourname.com</a>
+        <a href="mailto:REPLACE_WITH_EMAIL" class="contact-email placeholder">[your-email@domain.com]</a>
         <div class="social-links">
-            <a href="#">LinkedIn</a>
-            <a href="#">Dribbble</a>
-            <a href="#">Behance</a>
-            <a href="#">Twitter / X</a>
+            <!-- Replace href="#" with real profile URLs, or delete lines you don't use -->
+            <a href="#" class="placeholder">LinkedIn</a>
+            <a href="#" class="placeholder">Dribbble</a>
+            <a href="#" class="placeholder">Behance</a>
+            <a href="#" class="placeholder">Twitter / X</a>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 [Your Name] · Designed & built with care.</p>
+        <p>© 2026 <span class="placeholder">[Your Name]</span> · Designed & built with care.</p>
     </footer>
 
     <!-- ─── Scripts ───────────────────────────────────────────── -->
@@ -1023,6 +1039,7 @@
         function animateCounters() {
             document.querySelectorAll('.stat-num').forEach(el => {
                 const target = parseInt(el.textContent);
+                if (isNaN(target)) return;
                 const suffix = el.textContent.replace(/[0-9]/g, '');
                 let current = 0;
                 const step = target / 40;
