@@ -7,9 +7,16 @@
     <title>Your Name — UX Designer</title>
     <meta name="description"
         content="UX Designer portfolio showcasing thoughtful design, user-centric thinking, and impactful digital experiences." />
+    <link rel="icon" href="data:," />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+        media="print" onload="this.media='all'" />
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" />
+    </noscript>
     <style>
         /* ─── Reset & Base ─────────────────────────────────────── */
         *,
@@ -688,6 +695,10 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
+            nav.scrolled {
+                backdrop-filter: blur(8px);
+            }
         }
     </style>
 </head>
@@ -727,8 +738,8 @@
                 </div>
             </div>
 
-            <img src="deepak.jpg" alt="Deepak Kumar" class="hero-photo"
-                style="object-fit: cover; object-position: center top;" />
+            <img src="deepak.jpg" alt="Deepak Kumar" class="hero-photo" width="300" height="300"
+                fetchpriority="high" style="object-fit: cover; object-position: center top;" />
         </div>
     </div>
 
@@ -977,15 +988,20 @@
         // ── Cursor glow ──────────────────────────────────────────
         const glow = document.getElementById('cursorGlow');
         document.addEventListener('mousemove', e => {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
-        });
+            glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+        }, { passive: true });
 
         // ── Sticky nav ───────────────────────────────────────────
         const nav = document.getElementById('mainNav');
+        let navTicking = false;
         window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 50);
-        });
+            if (navTicking) return;
+            navTicking = true;
+            requestAnimationFrame(() => {
+                nav.classList.toggle('scrolled', window.scrollY > 50);
+                navTicking = false;
+            });
+        }, { passive: true });
 
         // ── Scroll reveal ─────────────────────────────────────────
         const io = new IntersectionObserver((entries) => {
