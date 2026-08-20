@@ -1,0 +1,731 @@
+<!--
+  CASE STUDY TEMPLATE
+  To add another project: duplicate this file, update the <title>/meta,
+  the case-hero content, meta-strip, insight/wireframe/impact cards, then
+  point the matching project card's "View case" link at the new file.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metaverse in Banking — Deepak Kumar</title>
+    <meta name="description"
+        content="Case study: designing a virtual bank branch concept for an immersive, avatar-based banking experience, by Deepak Kumar, UX Designer." />
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+        media="print" onload="this.media='all'" />
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" />
+    </noscript>
+    <style>
+        /* ─── Reset & Base (shared with home page) ─────────────── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #111112;
+            --surface: #19191b;
+            --border: #2a2a2d;
+            --muted: #5a5a62;
+            --subtle: #8a8a94;
+            --text: #e2e2e8;
+            --accent: #c9a96e;
+            --accent-dk: #9c7c4a;
+            --radius: 14px;
+            --nav-h: 64px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+            opacity: .5;
+        }
+
+        /* ─── Navigation ────────────────────────────────────────── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-h);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 100;
+            transition: background .3s, border-color .3s;
+        }
+
+        nav.scrolled {
+            background: rgba(17, 17, 18, .85);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: .04em;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-back {
+            font-size: .85rem;
+            font-weight: 400;
+            letter-spacing: .06em;
+            color: var(--subtle);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .nav-back:hover {
+            color: var(--accent);
+        }
+
+        /* ─── Sections layout ───────────────────────────────────── */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 90px 5%;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: .75rem;
+            font-weight: 500;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.2rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+            font-weight: 600;
+            line-height: 1.25;
+            color: var(--text);
+            margin-bottom: 1.2rem;
+        }
+
+        .section-divider {
+            width: 48px;
+            height: 1.5px;
+            background: var(--border);
+            margin-bottom: 2.2rem;
+        }
+
+        .section-text {
+            color: var(--subtle);
+            max-width: 640px;
+            margin-bottom: 1.2rem;
+        }
+
+        .section-text:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ─── Case hero ─────────────────────────────────────────── */
+        .case-hero {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: calc(var(--nav-h) + 70px) 5% 0;
+        }
+
+        .case-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            font-size: .78rem;
+            font-weight: 500;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.6rem;
+            opacity: 0;
+            transform: translateY(16px);
+            animation: fadeUp .7s .1s ease forwards;
+        }
+
+        .case-tag::before {
+            content: '';
+            display: block;
+            width: 28px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .case-title {
+            font-size: clamp(1.9rem, 4.5vw, 3rem);
+            font-weight: 500;
+            line-height: 1.15;
+            letter-spacing: -.02em;
+            color: var(--text);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp .8s .2s ease forwards;
+        }
+
+        .case-sub {
+            margin-top: 1.4rem;
+            max-width: 560px;
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: var(--subtle);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp .8s .35s ease forwards;
+        }
+
+        .meta-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            animation: fadeUp .8s .5s ease forwards;
+        }
+
+        .meta-label {
+            font-size: .7rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: .5rem;
+        }
+
+        .meta-value {
+            font-size: .92rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .case-cover {
+            width: 100%;
+            aspect-ratio: 16/8;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            background: linear-gradient(135deg, #1c1a2e 0%, #2a2040 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 3rem auto 0;
+            max-width: 860px;
+            overflow: hidden;
+        }
+
+        .cover-icon {
+            font-size: 4rem;
+            filter: drop-shadow(0 0 32px rgba(201, 169, 110, .3));
+            color: var(--text);
+        }
+
+        /* ─── Scroll reveal ──────────────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .9s cubic-bezier(.16, 1, .3, 1), transform .9s cubic-bezier(.16, 1, .3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── Insight cards ──────────────────────────────────────── */
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .insight-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem;
+            transition: border-color .25s;
+        }
+
+        .insight-card:hover {
+            border-color: var(--accent-dk);
+        }
+
+        .insight-num {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: .8rem;
+        }
+
+        .insight-text {
+            font-size: .9rem;
+            color: var(--subtle);
+            line-height: 1.6;
+        }
+
+        /* ─── Wireframe gallery ──────────────────────────────────── */
+        .wireframe-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .wireframe-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem;
+            transition: border-color .3s, transform .3s;
+        }
+
+        .wireframe-card:hover {
+            border-color: var(--accent-dk);
+            transform: translateY(-4px);
+        }
+
+        .wireframe-sketch {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: .9rem;
+            margin-bottom: 1rem;
+        }
+
+        .w-dots {
+            display: flex;
+            gap: .3rem;
+            margin-bottom: .8rem;
+        }
+
+        .w-dots span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--border);
+        }
+
+        .w-block {
+            height: 64px;
+            border: 1px dashed var(--border);
+            border-radius: 6px;
+            margin-bottom: .7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        .w-line {
+            height: 7px;
+            background: var(--border);
+            border-radius: 3px;
+            margin-bottom: .5rem;
+        }
+
+        .w-line.short {
+            width: 55%;
+            margin-bottom: 0;
+        }
+
+        .wireframe-caption {
+            font-size: .82rem;
+            color: var(--subtle);
+            text-align: center;
+        }
+
+        /* ─── Impact stats ───────────────────────────────────────── */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            padding: 1.6rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: border-color .25s;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-dk);
+        }
+
+        .stat-num {
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: .5rem;
+        }
+
+        .stat-desc {
+            font-size: .8rem;
+            color: var(--muted);
+            letter-spacing: .02em;
+        }
+
+        /* ─── End CTA ────────────────────────────────────────────── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .75rem 1.6rem;
+            border-radius: 50px;
+            font-size: .88rem;
+            font-weight: 500;
+            letter-spacing: .04em;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all .25s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #1a1610;
+            border: 1.5px solid transparent;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--subtle);
+            border: 1.5px solid var(--border);
+        }
+
+        .btn-ghost:hover {
+            color: var(--text);
+            border-color: var(--subtle);
+        }
+
+        .end-cta {
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .end-cta-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.6rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem 5%;
+            font-size: .78rem;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            letter-spacing: .04em;
+        }
+
+        .cursor-glow {
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201, 169, 110, .07) 0%, transparent 70%);
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: opacity .3s;
+            z-index: 0;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ─── Responsive ─────────────────────────────────────────── */
+        @media (max-width: 768px) {
+            section {
+                padding: 70px 6%;
+            }
+
+            .case-hero {
+                padding-top: calc(var(--nav-h) + 40px);
+            }
+
+            .meta-strip {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.4rem 1rem;
+            }
+
+            .insight-grid,
+            .wireframe-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav.scrolled {
+                backdrop-filter: blur(8px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- ─── Navigation ───────────────────────────────────────── -->
+    <nav id="mainNav">
+        <a href="../index.html#hero" class="nav-logo">DK.</a>
+        <a href="../index.html#projects" class="nav-back">← All Projects</a>
+    </nav>
+
+    <!-- ─── Case hero ────────────────────────────────────────── -->
+    <div class="case-hero">
+        <div class="case-tag">Case Study · Emerging Tech · 2024</div>
+        <h1 class="case-title">Metaverse in Banking</h1>
+        <p class="case-sub">
+            Designing a virtual bank branch concept for an immersive, avatar-based
+            banking experience.
+        </p>
+
+        <div class="meta-strip">
+            <div class="meta-item">
+                <div class="meta-label">Role</div>
+                <div class="meta-value">Lead UX / Concept Designer</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Timeline</div>
+                <div class="meta-value">6-week concept sprint</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Platform</div>
+                <div class="meta-value">VR / WebXR</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Team</div>
+                <div class="meta-value">1 designer · 1 3D artist · 1 technologist</div>
+            </div>
+        </div>
+
+        <div class="case-cover">
+            <span class="cover-icon">◎</span>
+        </div>
+    </div>
+
+    <!-- ─── Challenge ────────────────────────────────────────── -->
+    <section id="challenge" class="reveal">
+        <div class="section-label">01 — Challenge</div>
+        <h2 class="section-title">A virtual branch, but to what end?</h2>
+        <div class="section-divider"></div>
+        <p class="section-text">
+            The bank wanted a presence in the metaverse but had no framework for what a
+            "virtual branch" should actually do. Early internal demos felt novel for a
+            minute, then pointless — nobody could say why you'd come back.
+        </p>
+    </section>
+
+    <!-- ─── Research & Insights ──────────────────────────────── -->
+    <section id="research" class="reveal">
+        <div class="section-label">02 — Research</div>
+        <h2 class="section-title">Novelty wasn't the problem — trust was</h2>
+        <div class="section-divider"></div>
+        <p class="section-text" style="margin-bottom: 2rem;">
+            Reviewed emerging XR banking pilots and ran moderated sessions with 9 users
+            in an early VR prototype, watching how they reacted to the space and to
+            avatar-led interactions.
+        </p>
+
+        <div class="insight-grid">
+            <div class="insight-card">
+                <div class="insight-num">01</div>
+                <div class="insight-text">People wanted the space to feel familiar, not
+                    sci-fi — recognizable banking cues mattered more than spectacle.</div>
+            </div>
+            <div class="insight-card">
+                <div class="insight-num">02</div>
+                <div class="insight-text">Trust dropped sharply when avatars felt too
+                    abstract for a conversation about their money.</div>
+            </div>
+            <div class="insight-card">
+                <div class="insight-num">03</div>
+                <div class="insight-text">Everyone wanted a fast, obvious way back to the
+                    normal app — the headset couldn't be the only door in.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Wireframes & Process ─────────────────────────────── -->
+    <section id="process" class="reveal">
+        <div class="section-label">03 — Process</div>
+        <h2 class="section-title">From spatial sketch to tested prototype</h2>
+        <div class="section-divider"></div>
+        <p class="section-text" style="margin-bottom: 2rem;">
+            Mapped the branch as a spatial flow before any 3D modeling, then built rough
+            avatar-interaction prototypes to test where trust broke down.
+        </p>
+
+        <!-- Placeholder sketches — swap for real wireframe/prototype screenshots -->
+        <div class="wireframe-grid">
+            <div class="wireframe-card">
+                <div class="wireframe-sketch">
+                    <div class="w-dots"><span></span><span></span><span></span></div>
+                    <div class="w-block">⬡ ⬡ ⬡</div>
+                    <div class="w-line"></div>
+                    <div class="w-line short"></div>
+                </div>
+                <div class="wireframe-caption">Spatial layout flow</div>
+            </div>
+            <div class="wireframe-card">
+                <div class="wireframe-sketch">
+                    <div class="w-dots"><span></span><span></span><span></span></div>
+                    <div class="w-block">☺</div>
+                    <div class="w-line"></div>
+                    <div class="w-line short"></div>
+                </div>
+                <div class="wireframe-caption">Avatar interaction sketches</div>
+            </div>
+            <div class="wireframe-card">
+                <div class="wireframe-sketch">
+                    <div class="w-dots"><span></span><span></span><span></span></div>
+                    <div class="w-block">✓</div>
+                    <div class="w-line"></div>
+                    <div class="w-line short"></div>
+                </div>
+                <div class="wireframe-caption">Trust-cue testing</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Solution ──────────────────────────────────────────── -->
+    <section id="solution" class="reveal">
+        <div class="section-label">04 — Solution</div>
+        <h2 class="section-title">A hybrid branch, not a spectacle</h2>
+        <div class="section-divider"></div>
+        <p class="section-text">
+            Designed a simplified virtual space with recognizable banking landmarks — a
+            teller desk, advisor pods — realistic-but-approachable avatars, and a one-tap
+            exit back to the standard app at any point.
+        </p>
+        <div class="case-cover" style="max-width: 100%; margin-top: 2rem;">
+            <span class="cover-icon">⬡</span>
+        </div>
+    </section>
+
+    <!-- ─── Business Impact ──────────────────────────────────── -->
+    <section id="impact" class="reveal">
+        <div class="section-label">05 — Impact</div>
+        <h2 class="section-title">Pilot results</h2>
+        <div class="section-divider"></div>
+        <p class="section-text" style="margin-bottom: 2rem;">
+            As a concept pilot, impact was measured through user testing rather than
+            production metrics.
+        </p>
+
+        <!-- Placeholder metrics — replace with real pilot/launch data -->
+        <div class="impact-grid">
+            <div class="stat-card">
+                <div class="stat-num">78%</div>
+                <div class="stat-desc">Rated the experience trustworthy</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">3.2×</div>
+                <div class="stat-desc">Longer engagement vs. video call</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">40%</div>
+                <div class="stat-desc">Preferred it for complex queries</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">12</div>
+                <div class="stat-desc">Stakeholder teams briefed on the concept</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── End CTA ───────────────────────────────────────────── -->
+    <section class="end-cta reveal">
+        <h2 class="section-title">Want the details behind a decision?</h2>
+        <p class="section-text" style="margin: 0 auto;">
+            Happy to walk through the research or process in more depth.
+        </p>
+        <div class="end-cta-actions">
+            <a href="../index.html#projects" class="btn btn-primary">← Back to All Projects</a>
+            <a href="../index.html#contact" class="btn btn-ghost">Say Hello</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Deepak Kumar · Designed & built with care.</p>
+    </footer>
+
+    <script>
+        const glow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', e => {
+            glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+        }, { passive: true });
+
+        const nav = document.getElementById('mainNav');
+        let navTicking = false;
+        window.addEventListener('scroll', () => {
+            if (navTicking) return;
+            navTicking = true;
+            requestAnimationFrame(() => {
+                nav.classList.toggle('scrolled', window.scrollY > 50);
+                navTicking = false;
+            });
+        }, { passive: true });
+
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    </script>
+</body>
+
+</html>
